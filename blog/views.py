@@ -1,6 +1,6 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from .models import Post
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 # cbv로 포스트 목록 페이지 만들기
 class PostList(ListView):
@@ -18,15 +18,20 @@ class PostList(ListView):
 #             'posts': posts,
 #         }
 #     )
+#
 
-def single_post_page(request, pk):
-    post = Post.objects.get(pk=pk)
+# cbv로 포스트 상세 페이지 만들기
+class PostDetail(DetailView):
+    model = Post
 
-    return render(
-        request,
-        'blog/single_post_page.html',
-        {
-            'post': post,
-        }
-    )
+# def single_post_page(request, pk):
+#     post = Post.objects.get(pk=pk)
+#
+#     return render(
+#         request,
+#         'blog/post_detail.html',
+#         {
+#             'post': post,
+#         }
+#     )
 # Create your views here.

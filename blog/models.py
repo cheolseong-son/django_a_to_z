@@ -13,6 +13,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/blog/category/{self.slug}/'
     # categorys로 표기되는 것을 Categories로 변경
     class Meta:
         verbose_name_plural = 'Categories'

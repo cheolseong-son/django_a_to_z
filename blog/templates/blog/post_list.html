@@ -125,7 +125,11 @@
                     {% endif %}
                     <div class="card-body">
                         <h2 class="card-title">{{ p.title }}</h2>
-                        <p class="card-text">{{ p.content }}</p>
+                        {% if p.hook_text %}
+                            <h5 class="text_muted">{{ p.hook_text }}</h5>
+                        {% endif %}
+<!--                        truncatewords: 문자열의 단어수 자르기, truncatechars: 글자수 자르기 -->
+                        <p class="card-text">{{ p.content|truncatewords:45 }}</p>
                         <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">

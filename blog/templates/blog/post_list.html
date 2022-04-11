@@ -116,7 +116,13 @@
                 <h1>Blog</h1>
                 {% for p in post_list %}
                 <div class="card mb-4">
-                    <img class="card-img-top" src="{{ p.head_image.url }}" alt= "Card image cap">
+<!--                    조건문 사용으로 이미지가 없으면 alt= "{{ p }} head image"로 대체-->
+                    {% if p.head_image %}
+                    <img class="card-img-top" src="{{ p.head_image.url }}" alt= "{{ p }} head image">
+                    {% else %}
+                    <!-- 이미지가 없다면 https://picsum.photos/가로사이즈/세로사이즈" 랜덤이미지 출력 seed/pk를 넣어 새로고침에도 이미지 고정 -->
+                    <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image">
+                    {% endif %}
                     <div class="card-body">
                         <h2 class="card-title">{{ p.title }}</h2>
                         <p class="card-text">{{ p.content }}</p>

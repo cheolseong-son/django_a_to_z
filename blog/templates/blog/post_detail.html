@@ -21,6 +21,9 @@
         </p>
         <hr/>
         <p>{{ post.created_at }}</p>
+        {% if user.is_authenticated and user == post.author %}
+            <a class="btn btn-info btn-sm float-right" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fa-solid fa-square-pen"></i>  Edit Post</a>
+        {% endif %}
         <!-- Post categories-->
         <div>
             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>

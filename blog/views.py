@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post, Category, Tag
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # cbv로 포스트 목록 페이지 만들기
 class PostList(ListView):
@@ -84,3 +85,17 @@ class PostDetail(DetailView):
 #         }
 #     )
 # Create your views here.
+
+# LoginRequiredMixin : 이 클라스를 추가하면 로그인 했을 경우만 정쌍적으로 페이지가 보인다.
+class PostCreate(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
+
+    def form_valid(self, form):
+        current_user = self.request.user # 웹사이트의 방문자
+        if current_user.is_authenticated: # 웹사이트 방문자가 로그인 상태인지 아닌지 확인
+            form.instance.author = current_user # 참이면 form의 (instance)새로 생성한 포스트의 author필드에 current_user 넣기
+            return super(PostCreate, self).form_valid(form)
+        else:
+            return redirect('/blog/') # 되돌려 보냄
+

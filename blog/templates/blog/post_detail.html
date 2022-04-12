@@ -43,6 +43,16 @@
             <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
             <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
             <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+            {% if post.tags.exists %}
+                    <i class="fa-solid fa-tags"></i>
+                    {% for tag in post.tags.all %}
+                        <a href="{{ tag.get_absolute_url }}">
+                            <span class="badge rounded-pill bg-light text-dark">{{ tag }}</span>
+                        </a>
+                    {% endfor %}
+                    <br/>
+                    <br/>
+                {% endif %}
         </section>
 
         {% if post.file_upload %}

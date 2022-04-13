@@ -1,5 +1,5 @@
 {% extends 'blog/base_full_width.html' %}
-
+{% load crispy_forms_tags %}
 {% block head_title %}Edit Post - Blog{% endblock %}
 
 {% block main_area %}
@@ -7,13 +7,13 @@
     <hr/>
 <!-- <form> 태그는 사용자가 기록한 값을 서버로 보내기 위한 용도, form 태그 안 필수 -> {% csrf_token %} :: csrf공격으로부터 보호하기 위한 장고가 제공하는 기능 -->
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        <table>
-            {{ form  }}
-            <tr>
-                <th><label for="id_tags_str">Tags:</label></th>
-                <td><input type="text" name="tags_str" id="id_tags_str" value="{{ tags_str_default }}"></td>
-            </tr>
-        </table>
+        {{ form | crispy }}
+        <div id="div_id_tags_str">
+            <label for="id_tags_str">Tags:</label>
+            <input type="text" name="tags_str" id="id_tags_str" class="textinput textInput form-control"
+                   value="{{ tags_str_default }}">
+        </div>
+        <br/>
         <button type="submit" class="btn btn-primary float-right">Submit</button>
     </form>
 {% endblock %}

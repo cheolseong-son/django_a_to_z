@@ -1,3 +1,5 @@
+{% load socialaccount %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">Do It Django</a>
@@ -17,20 +19,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/about_me/">About Me</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link disabled">공지사항</a>
                 </li>
@@ -40,9 +29,21 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
             <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbaDropdownMenuLink">
+                        <a class="dropdown-item" href="/account/logout/">Log Out</a>
+                    </div>
+                </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</a>
                 </li>
+                {% endif %}
 
             </ul>
         </div>
@@ -53,17 +54,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel"><i class="fa-thin fa-arrow-right-to-bracket"></i>&nbsp Log In</h5>
+                <h5 class="modal-title" id="loginModalLabel"><i class="fa-solid fa-right-to-bracket"></i>&nbsp Log In</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-outline-dark btn-block btn-sm"><i class="fa-brands fa-google"></i>&nbsp&nbsp Log in with Google</button>
-                        <button type="button" class="btn btn-outline-dark btn-block btn-sm"><i class="fa-thin fa-envelope"></i>&nbsp&nbsp Log in with E-mail</button>
+                        <!-- 로그인 버튼-->
+                        <a role="button" type="button" class="btn btn-outline-dark btn-block btn-sm" href="{% provider_login_url 'google' %}"><i class="fa-brands fa-google"></i>&nbsp&nbsp Log in with Google</a>
+                        <a role="button" type="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/login/"><i class="fa-solid fa-envelope"></i>&nbsp&nbsp Log in with E-mail</a>
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-outline-dark btn-block btn-sm"><i class="fa-thin fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</button>
+                        <a role="button" type="button" class="btn btn-outline-dark btn-block btn-sm" href="accounts/signup/"><i class="fa-solid fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</a>
                     </div>
                 </div>
             </div>

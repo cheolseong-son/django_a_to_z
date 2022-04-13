@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from markdownx.models import MarkdownxField
 import os
+
 
 # 데이터베이스에 반영하기 위해서 python manage.py makemigrations --> python manage.py migrate
 # No changes detected 는 프로젝트 폴더의 settings.py에 등록이 되어있지 않은 상태

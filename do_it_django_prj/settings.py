@@ -9,10 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
-from pathlib import Path
 import os
-
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,10 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+
     'crispy_forms',
+
+    # 로그인 기능
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',  # 구글 로그인 사용
+
     'blog',
     'single_pages',
-
 ]
 
 MIDDLEWARE = [
@@ -111,11 +118,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Seoul'  # 서울 시간기준
+TIME_ZONE = 'Asia/Seoul'  # 서울 시간 기준
 
 USE_I18N = True
 
-USE_TZ = False # True에서 False로 바꿈
+USE_TZ = False # True 에서 False 로 바꿈
 
 
 # Static files (CSS, JavaScript, Images)
@@ -125,8 +132,23 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')  # 추가
-CRISPY_TEMPLATE_PACK = 'bootstrap4' # crispy_forms의 스타일을 bootstrap4로 지정
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # crispy_forms 의 스타일 을 bootstrap4로 지정
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 로그인 <--
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+LOGIN_REDIRECT_URL = '/blog/'
+# 로그인 -->

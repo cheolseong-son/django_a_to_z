@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Comment
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
@@ -183,3 +183,15 @@ def new_comment(request, pk):
         else:
             raise PermissionDenied
 
+# 로그인 되지 않은 상태에서 CommentUpdate에 POST방식으로 정보를 보내는 상황은 막기 위해 LoginRequiredMixin을 포함시킨다.
+# dispatch() : 이 메서드는 웹 사이트 방문자그이 요청이 GET인지 POST인지를 판단하는 역활을 한다.
+
+class CommentUpdate(LoginRequiredMixin, UpdateView):
+    model = Comment
+    form_class = CommentForm
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied

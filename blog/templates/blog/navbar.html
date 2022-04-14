@@ -33,7 +33,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ user.username }}
+                        {% if user.socialaccount_set.all.first.get_avatar_url %}
+                                <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.first.get_avatar_url }}" alt="">
+                            {% else %}
+                                <img class="rounded-circle" width="25px" height="25px" src="https://doitdjango.com/avatar/id/855/04bb6400255104ea/svg/{{ user.username }}.png/" alt="">
+                            {% endif %}
+                            &nbsp;
+                            {{ user.username }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbaDropdownMenuLink">
                         <a class="dropdown-item" href="/account/logout/">Log Out</a>

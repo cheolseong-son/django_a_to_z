@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404
 class PostList(ListView):
     model = Post
     ordering = '-pk'
+    paginate_by = 5 # 한 페이지에 5개 포스트 보여지기
     # template_name = '/blog/post_list.html'
 
     def get_context_data(self, **kwargs):

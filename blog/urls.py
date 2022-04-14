@@ -3,7 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('search/<str:q>/', views.PostSearch.as_view()),
+
+    path('search/<str:q>/', views.PostSearch.as_view()),  # <str:q>라고 한 부분은 검색어에 해당하는 값을 문자열 (str)로 받고, 이값을 q라고 부르겠다는 의미
     path('delete_comment/<int:pk>/', views.delete_comment),
     path('update_comment/<int:pk>/', views.CommentUpdate.as_view()),
     path('update_post/<int:pk>/', views.PostUpdate.as_view()),

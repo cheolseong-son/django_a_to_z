@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> new_br
 # Python 3.8 (alpine 리눅스 기반)을 base 이미지로 사용
 FROM python:3.8.0-alpine
 
@@ -23,6 +26,9 @@ COPY . /usr/app/
 
 # requirements.txt에 나열된 라이브러리를 설치
 =======
+<<<<<<< HEAD
+>>>>>>> new_br
+=======
 >>>>>>> new_br
 # pull official base image
 FROM python:3.8.0-alpine
@@ -40,6 +46,10 @@ RUN apk add postgresql-dev gcc python3-dev musl-dev zlib-dev jpeg-dev #--(5.2)
 COPY . /usr/src/app/
 # install dependencies
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
+>>>>>>> new_br
 =======
 >>>>>>> master
 >>>>>>> new_br

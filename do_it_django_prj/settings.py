@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax'
 <<<<<<< HEAD
+<<<<<<< HEAD
 SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -36,6 +37,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9
 # 로컬에서 개발할 때는 1(True)이고 그렇지 않을 경우에는 0(False)가 되도록 만든다.
 DEBUG = int(os.environ.get('DEBUG', 1))
 
+=======
+# 도커 작업을 위한 시크릿 키 값 가져오기
+SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# 로컬에서 개발할 때는 1(True)이고 그렇지 않을 경우에는 0(False)가 되도록 만든다.
+DEBUG = int(os.environ.get('DEBUG', 1))
+
+>>>>>>> new_br
 # HOSTS로 허용하는 주소를 적어두는 곳
 # env파일에서 DJANGO_ALLOWED_HOSTS를 읽어올 수 있다면 그 값을 사용하고 없다면 이전과 동일하게 되도록 설정
 =======
@@ -45,6 +55,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9
 DEBUG = int(os.environ.get('DEBUG', 1))
 
 >>>>>>> master
+<<<<<<< HEAD
+>>>>>>> new_br
+=======
 >>>>>>> new_br
 if os.environ.get('DJANGO_ALLOWED_HOSTS'):
     ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')

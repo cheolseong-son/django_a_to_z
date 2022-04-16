@@ -3,8 +3,14 @@ backcall==0.2.0
 beautifulsoup4==4.9.1
 certifi==2020.6.20
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+cffi==1.15.0
+=======
+>>>>>>> master
+>>>>>>> new_br
+=======
 cffi==1.15.0
 =======
 >>>>>>> master
@@ -19,11 +25,14 @@ django-crispy-forms==1.9.2
 django-extensions==3.0.9
 django-markdownx==3.0.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 gunicorn==20.0.4
 idna==2.10
 importlib-metadata==2.0.0
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> new_br
 ez-setup==0.9
 gunicorn==20.0.4
 idna==2.10
@@ -33,6 +42,9 @@ gunicorn==20.0.4
 idna==2.10
 importlib-metadata==2.0.0
 >>>>>>> master
+<<<<<<< HEAD
+>>>>>>> new_br
+=======
 >>>>>>> new_br
 ipython==7.18.1
 ipython-genutils==0.2.0
@@ -42,11 +54,14 @@ oauthlib==3.1.0
 parso==0.7.1
 pickleshare==0.7.5
 <<<<<<< HEAD
+<<<<<<< HEAD
 Pillow==7.2.0
 prompt-toolkit==3.0.7
 psycopg2==2.8.6
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> new_br
 Pillow==9.1.0
 prompt-toolkit==3.0.7
 psycopg2==2.9.3
@@ -55,6 +70,9 @@ Pillow==7.2.0
 prompt-toolkit==3.0.7
 psycopg2==2.8.6
 >>>>>>> master
+<<<<<<< HEAD
+>>>>>>> new_br
+=======
 >>>>>>> new_br
 Pygments==2.7.1
 python3-openid==3.2.0
@@ -70,7 +88,12 @@ wcwidth==0.2.5
 zipp==3.2.0
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 zipp==3.2.0
+=======
+zipp==3.2.0
+>>>>>>> master
+>>>>>>> new_br
 =======
 zipp==3.2.0
 >>>>>>> master

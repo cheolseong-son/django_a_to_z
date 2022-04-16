@@ -10,7 +10,9 @@ services:
     # Dockerfile을 을 실행해 컨테이너 이미지를 만든다.
     build: .
     # 서버 실행
-    command: python manage.py runserver 0.0.0.0:8000
+#    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn do_it_django_prj.wsgi:application --bind 0.0.0.0:8000
+
     # 로컬 컴푸터의 폴더와 도커의 폴더를 연결
     volumes:
       - ./:/usr/app/

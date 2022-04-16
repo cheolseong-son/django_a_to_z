@@ -21,11 +21,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax'
+<<<<<<< HEAD
 SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', 1))
 
+=======
+<<<<<<< HEAD
+# 도커 작업을 위한 시크릿 키 값 가져오기
+SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# 로컬에서 개발할 때는 1(True)이고 그렇지 않을 경우에는 0(False)가 되도록 만든다.
+DEBUG = int(os.environ.get('DEBUG', 1))
+
+# HOSTS로 허용하는 주소를 적어두는 곳
+# env파일에서 DJANGO_ALLOWED_HOSTS를 읽어올 수 있다면 그 값을 사용하고 없다면 이전과 동일하게 되도록 설정
+=======
+SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = int(os.environ.get('DEBUG', 1))
+
+>>>>>>> master
+>>>>>>> new_br
 if os.environ.get('DJANGO_ALLOWED_HOSTS'):
     ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 else:
@@ -92,8 +112,12 @@ WSGI_APPLICATION = 'do_it_django_prj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get('SQL_DATABASE', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': os.environ.get('SQL_USER', 'user'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD', 'password'),
+        'HOST': os.environ.get('SQL_HOST', 'localhost'),
+        'PORT': os.environ.get("SQL_PORT", '5432'),
     }
 }
 
@@ -133,6 +157,7 @@ USE_TZ = False # True 에서 False 로 바꿈
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')  # 추가

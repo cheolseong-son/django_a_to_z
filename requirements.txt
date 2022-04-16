@@ -2,7 +2,10 @@ asgiref==3.2.10
 backcall==0.2.0
 beautifulsoup4==4.9.1
 certifi==2020.6.20
+<<<<<<< HEAD
 cffi==1.15.0
+=======
+>>>>>>> master
 chardet==3.0.4
 colorama==0.4.3
 decorator==4.4.2
@@ -12,10 +15,16 @@ django-allauth==0.42.0
 django-crispy-forms==1.9.2
 django-extensions==3.0.9
 django-markdownx==3.0.1
+<<<<<<< HEAD
 ez-setup==0.9
 gunicorn==20.0.4
 idna==2.10
 importlib-metadata==4.10.0
+=======
+gunicorn==20.0.4
+idna==2.10
+importlib-metadata==2.0.0
+>>>>>>> master
 ipython==7.18.1
 ipython-genutils==0.2.0
 jedi==0.17.2
@@ -23,9 +32,15 @@ Markdown==3.2.2
 oauthlib==3.1.0
 parso==0.7.1
 pickleshare==0.7.5
+<<<<<<< HEAD
 Pillow==9.1.0
 prompt-toolkit==3.0.7
 psycopg2==2.9.3
+=======
+Pillow==7.2.0
+prompt-toolkit==3.0.7
+psycopg2==2.8.6
+>>>>>>> master
 Pygments==2.7.1
 python3-openid==3.2.0
 pytz==2020.1
@@ -36,4 +51,8 @@ sqlparse==0.3.1
 traitlets==5.0.4
 urllib3==1.25.10
 wcwidth==0.2.5
+<<<<<<< HEAD
 zipp==3.2.0
+=======
+zipp==3.2.0
+>>>>>>> master

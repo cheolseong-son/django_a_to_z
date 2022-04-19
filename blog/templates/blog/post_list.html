@@ -3,12 +3,14 @@
 {% block main_area %}
     {% if user.is_authenticated %}
         {% if user.is_superuser or user.is_staff %}
-            <a class="btn btn-info btn-sm float-right" href="/blog/create_post/" role="button">
+            <div align="right" class="mt-2">
+                <a class="btn btn-info btn-sm float-right" href="/blog/create_post/" role="button">
                 <i class="fa-solid fa-pencil"></i>&nbsp;&nbsp;New Post
             </a>
+            </div>
+
         {% endif %}
     {% endif %}
-
 
     <h1>Blog
         {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}

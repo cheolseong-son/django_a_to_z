@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Post
+from django.views.generic import CreateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def landing(request):
     recent_posts = Post.objects.order_by('-pk')[:3]
@@ -16,4 +18,5 @@ def about_me(request):
         request,
         'single_pages/about_me.html'
     )
+
 # Create your views here.

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Do it Sonny</title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+<!--    <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}" media="screen">-->
+    <script src="https://kit.fontawesome.com/a6164e37e3.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+{% include 'blog/navbar.html' %}
+
+<!--    class = table table-bordered, or table tabel-striped, table table-hover -->
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+<!--            <th>조회수</th>-->
+        </tr>
+        </thead>
+        {% for n in notices %}
+        <tbody>
+        <tr>
+
+            <td>{{ n.pk}}</td>
+            <td><a href= {{ n.get_absolute_url }} >{{ n.title }}</a></td>
+            <td>{{ n.author }}</td>
+            <td>{{ n.created_at }}</td>
+        </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+    <hr/>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-outline-dark" href="/notice/create_notice/"><i class="fa-solid fa-square-pen"></i>&nbsp;글쓰기</a>
+    </div>
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center mb-4">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!--<ul class="pagination justify-content-center mb-4">-->
+<!--    {% if page_obj.has_next %}-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; Older</a>-->
+<!--        </li>-->
+<!--    {% else %}-->
+<!--        <li class="page-item disabled">-->
+<!--            <a class="page-link" href="#">&larr; Older</a>-->
+<!--        </li>-->
+<!--    {% endif %}-->
+
+<!--    {% if page_obj.has_previous %}-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Newer &rarr;</a>-->
+<!--        </li>-->
+<!--    {% else %}-->
+<!--        <li class="page-item disabled">-->
+<!--            <a class="page-link" href="#">Newer &rarr;</a>-->
+<!--        </li>-->
+<!--    {% endif %}-->
+<!--</ul>-->
+
+
+
+<div class="fixed-bottom">
+    {% include 'blog/footer.html' %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+

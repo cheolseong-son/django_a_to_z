@@ -17,7 +17,8 @@
         <div class="row justify-content-between">
             <div class="col-lg-6 text-dark">
                 <h1 class="mt-5">Django</h1>
-                <h5>파이썬 진영의 가장 대표적인 웹프레임워크 중 하나인 django를 이용하여 나만의 블로그 만들기</h5>
+                <h5>파이썬 가장 대표적인 웹 프레임워크 중 하나인 Django를 이용하여</h5>
+                <h5>나만의 블로그 만들기</h5>
             </div>
             <div class="col-lg-5 mt-5" >
                 <h2 class="text-dark">Blog - Recent Posts</h2>
@@ -25,12 +26,9 @@
                     <div class="card mt-1">
                         <div class="card-body">
                             <h6><a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">{{ post.title }}</a></h6>
-                            <span class="badge badge-pill badge-light float-right">
-<!--                                <img class="mr-1 rounded-circle" width="20px" src="{{ post.get_avatar_url }}" alt="{{ post.author }}">-->
-                                {{ post.author.username }}
-                                &nbsp;
-                                &nbsp;
-                                {{ post.created_at }}
+                            <span class="badge badge-pill badge-light">
+                                <img class="mr-1 rounded-circle" width="15px" src="{{ post.get_avatar_url }}" alt="{{ post.author }}">
+                                &nbsp;&nbsp;{{ post.created_at }}
                            </span>
                         </div>
                     </div>

@@ -15,7 +15,6 @@
 
 <!--    class = table table-bordered, or table tabel-striped, table table-hover -->
 <div class="container">
-
     <table class="table table-striped">
         <thead>
         <tr>
@@ -23,28 +22,29 @@
             <th>제목</th>
             <th>작성자</th>
             <th>날짜</th>
-<!--            <th>조회수</th>-->
+            <th>조회수</th>
         </tr>
         </thead>
-        {% for n in notices %}
         <tbody>
+        {% for n in notice_list %}
         <tr>
-
             <td>{{ n.pk}}</td>
             <td><a href= {{ n.get_absolute_url }} >{{ n.title }}</a></td>
             <td>{{ n.author }}</td>
             <td>{{ n.created_at }}</td>
+            <td></td>
         </tr>
-
-        </tbody>
         {% endfor %}
+        </tbody>
     </table>
     <hr/>
-
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-outline-dark" href="/notice/create_notice/"><i class="fa-solid fa-square-pen"></i>&nbsp;글쓰기</a>
-    </div>
-
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-outline-dark" href="/notice/create_notice/"><i class="fa-solid fa-square-pen"></i>&nbsp;글쓰기</a>
+            </div>
+        {% endif %}
+    {% endif %}
 
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center mb-4">

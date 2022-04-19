@@ -14,16 +14,18 @@
 {% include 'blog/navbar.html' %}
 
 <!--    class = table table-bordered, or table tabel-striped, table table-hover -->
-<div class="container">
+<div class="container mt-5">
     <nav>
-        <a href="/notice/"> {{ notice.title }} </a>
+        <h4>{{ notice.title }} </h4>
     </nav>
-    <h5>{{ notice.content }}</h5>
-    <p>{{ notice.created_at }}</p>
+        <p>{{ notice.content }}</p>
+        <p class="d-grid gap-2 d-md-flex justify-content-md-end">{{ notice.created_at }}</p>
     <hr/>
 
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-outline-dark" href="/notice/"><i class="fa-solid fa-circle-left"></i>&nbsp;돌아가기</a>
+    </div>
 </div>
-
 
 <div class="fixed-bottom">
     {% include 'blog/footer.html' %}

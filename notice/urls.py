@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns= [
-    path('<int:pk>', views.notice_page),
-    path('', views.notice),
+    path('create_notice/', views.NoticeCreate.as_view()),
+    path('<int:pk>', views.NoticeDetail.as_view()),
+    path('', views.NoticeList.as_view()),
 ]

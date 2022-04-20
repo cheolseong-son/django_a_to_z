@@ -81,7 +81,7 @@
 <!--                        <textarea class="form-control" rows="3"></textarea>-->
                         {{ comment_form | crispy }}
                     </div>
-                    <div align="right">
+                    <div align="right" class="mt-2">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -99,22 +99,21 @@
             <img class="d-flex mr-3 rounded-circle" src="{{ comment.get_avatar_url }}" alt="{{ comment.author }}" width="60px">
             <div class="media-body">
                 {% if user.is_authenticated and comment.author == user %}
-                    <div class="btn float-right">
+                    <div class="float-right">
                         <a role="button"
-                           class="btn btn-sm btn-info"
-                           id="comment-{{ comment.pk }}-update-btn"
-                           href="/blog/update_comment/{{ comment.pk }}/">
-                            edit
+                        class="btn btn-sm btn-info"
+                        id="comment-{{ comment.pk }}-update-btn"
+                        href="/blog/update_comment/{{ comment.pk }}/">
+                        edit
                         </a>
-                        <a role="button"
-                           href="#"
-                           id="comment-{{ comment.pk }}-delete-modal-btn"
-                           class="btn btn-sm btn-danger"
-                           data-toggle="modal" data-target="#deleteCommentModal-{{ comment.pk }}">
-                            delete
+                        <a role="button" 
+                        href="#"
+                        id="comment-{{ comment.pk }}-delete-modal-btn"
+                        class="btn btn-sm btn-danger"
+                        data-toggle="modal" data-target="#deleteCommentModal-{{ comment.pk }}">
+                        delete
                         </a>
                     </div>
-
                     <!-- Modal -->
                     <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" role="dialog" aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from .models import Notice
 from django.views.generic import ListView, DetailView, CreateView
@@ -7,7 +8,7 @@ class NoticeList(ListView):
     model = Notice
     template_name = 'notice/notice.html'
     ordering = '-pk'
-
+    paginate_by = 3 # 한 페이지에 10개씩 보여주기
 
 # def notice(request):
 #     notices = Notice.objects.all().order_by('-pk') # 최신순으로 가져오기
@@ -35,7 +36,7 @@ class NoticeDetail(DetailView):
 #     )
 
 # Create your views here.
-# 공지사항 작성
+# 공지사항 작성 # 로그인 확인, 유저 등급 확인, 작성뷰
 class NoticeCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Notice
     fields = ['title', 'content']
@@ -52,3 +53,22 @@ class NoticeCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return super(NoticeCreate, self).form_valid(form)
         else:
             return redirect('/notice/')
+
+# 위에서 만든 NoticeList를 상속받아 NoticeSearch를 만들면 NoticeList에서 개발한 기능을
+# 그대로 이용할 수 있다.
+
+class NoticeSearch(NoticeList):
+    paginate_by = None
+
+    def get_queryset(self): # == Notice.objects.all() 과 같음
+        q = self.kwargs['q']
+        notice_list = Notice.objects.filter(
+            Q(title__contains=q)).distinct()
+        return notice_list
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(NoticeSearch, self).get_context_data()
+    #     q = self.kwargs['q']
+    #     context['search_info'] = f'검색 결과:{q} ({self.get_queryset().count()})'
+    #     return context
+        

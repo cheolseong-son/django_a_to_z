@@ -221,5 +221,4 @@ class PostSearch(PostList):
         context = super(PostSearch, self).get_context_data()
         q = self.kwargs['q']
         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
-
         return context

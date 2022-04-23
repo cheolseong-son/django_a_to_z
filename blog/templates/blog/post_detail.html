@@ -40,7 +40,8 @@
         {% endif %}
         <hr/>
         <section class="mb-5">
-            <p>{{ post.content }}</p>
+            <!-- | safe도 함께 입력해 HTML 이스케이핑을 방지하는 필터도 추가 -->
+            <p>{{ post.get_content_markdown | safe }}</p>
             {% if post.tags.exists %}
                     <i class="fa-solid fa-tags"></i>
                     {% for tag in post.tags.all %}

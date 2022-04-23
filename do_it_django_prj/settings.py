@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax'
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', 'g=y#7_n--92(0(b(-7r^evfkxqh=#q=2%+8%9#4md+lmn!w$ax')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 로컬에서 개발할 때는 1(True)이고 그렇지 않을 경우에는 0(False)가 되도록 만든다.
@@ -55,7 +56,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',  # 구글 로그인 사용
-
+    'markdownx',  # 마크다운 앱에 추가
     'blog',
     'single_pages',
     'notice',
@@ -135,7 +136,7 @@ TIME_ZONE = 'Asia/Seoul'  # 서울 시간 기준
 
 USE_I18N = True
 
-USE_TZ = False # True 에서 False 로 바꿈
+USE_TZ = False  # True 에서 False 로 바꿈
 
 
 # Static files (CSS, JavaScript, Images)
